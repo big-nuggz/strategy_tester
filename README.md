@@ -24,11 +24,19 @@ Instal requirements:
 
 ## Usage
 
+Download the historical market data, then test your strategies on it. That's the flow.
+
+### Download Data
+
 Download stock data with `download.py`:
 
 `python -m download`
 
 The data will be stored inside `data/`, which will be automatically created upon running the download script for the first time.
+
+### Run Strategies
+
+Add any strategy you want to test inside `strategy/`. Then test run them.
 
 ## Development Environment
 
