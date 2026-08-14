@@ -14,9 +14,12 @@ def download_us(path=PATH_SP500, force=False, verbose=True):
             if verbose: print('downloading anyway...')
         else:
             return
+    else:
+        if verbose: print('downloading...')
 
     # download daily, since monthly only starts from 1985
-    data = yf.download('^GSPC', period='max', interval='1d', progress=verbose)
+    ticker = yf.Ticker('^GSPC')
+    data = ticker.history(period='max', interval='1d')
 
     head, tail = path_split(path)
     makedirs(head, exist_ok=True)
