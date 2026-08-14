@@ -1,0 +1,1 @@
+PATH_SP500 = 'data/sp500.csv'
