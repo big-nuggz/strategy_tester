@@ -1,13 +1,14 @@
 from os.path import split as path_split
 from os.path import exists as path_exists
 from os import makedirs
+from typing import Literal
 
 import yfinance as yf
 
-from constants import PATH_SP500
+from constants import PATH_SP500, PATH_SP500_TR
 
 
-def download_us(path=PATH_SP500, force=False, verbose=True):
+def download(path, ticker=Literal['^GSPC', '^SP500TR'], force=False, verbose=True):
     if path_exists(path):
         if verbose: print(f'{path} already exists')
         if force:
@@ -18,7 +19,7 @@ def download_us(path=PATH_SP500, force=False, verbose=True):
         if verbose: print('downloading...')
 
     # download daily, since monthly only starts from 1985
-    ticker = yf.Ticker('^GSPC')
+    ticker = yf.Ticker(ticker)
     data = ticker.history(period='max', interval='1d')
 
     head, tail = path_split(path)
@@ -30,4 +31,5 @@ def download_us(path=PATH_SP500, force=False, verbose=True):
 
 # python -m download
 if __name__ == '__main__':
-    download_us()
+    download(PATH_SP500, '^GSPC')
+    download(PATH_SP500_TR, '^SP500TR')
