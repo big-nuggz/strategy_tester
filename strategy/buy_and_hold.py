@@ -27,6 +27,6 @@ class BuyAndHold(Strategy):
 
     def get_results(self) -> float:
         final_return = (self.final_price - self.buy_price) / self.buy_price
-        portfolio_value = self.final_price * self.budget
+        portfolio_value = (1 + final_return) * self.budget
 
         return portfolio_value, final_return

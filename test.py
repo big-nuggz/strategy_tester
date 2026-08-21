@@ -7,7 +7,7 @@ from strategy.buy_and_hold import BuyAndHold
 
 # parameters
 budget = 1000 # dollars maybe
-starting_date = datetime(year=1950, month=1, day=1, tzinfo=UTC)
+starting_date = datetime(year=2007, month=1, day=1, tzinfo=UTC)
 testing_period = 5 # years
 
 data = load_sp500()
