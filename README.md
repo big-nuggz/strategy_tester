@@ -36,7 +36,9 @@ The data will be stored inside `data/`, which will be automatically created upon
 
 ### Run Strategies
 
-Add any strategy you want to test inside `strategy/`. Then test run them.
+Add any strategy you want to test inside `strategy/`. Then add it to the list of tests inside `test.py`, and run the test with:
+
+`python -m test`
 
 ## Development Environment
 
