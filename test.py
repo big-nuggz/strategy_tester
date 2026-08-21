@@ -3,6 +3,7 @@ from dateutil.relativedelta import relativedelta
 
 import numpy as np
 
+from constants import PATH_SP500, PATH_SP500_TR
 from data import load_sp500
 from strategy.buy_and_hold import BuyAndHold
 from strategy.dca import DCA
@@ -11,10 +12,12 @@ from strategy.dca import DCA
 # parameters
 budget = 10000 # dollars maybe
 year_start = 1930
-year_end = 2010 # this + testing period is the final year in dataset
+# year_start = 1989
+year_end = 2015 # this + testing period is the final year in dataset
 testing_period = 10 # years
 
-data = load_sp500()
+data = load_sp500(PATH_SP500)
+# data = load_sp500(PATH_SP500_TR)
 
 slices = []
 for year in range(year_start, year_end + 1):
@@ -40,12 +43,12 @@ for sliced_data in slices:
 benchmark_return = np.mean(benchmark_results)
 dca_return = np.mean(dca_results)
 
-print(f'initial investment ${budget:.2f} with {testing_period} year testing period')
+print(f'{testing_period} year testing period, number of samples = {len(slices)}')
 
 print('-' * 40)
-print('benchmark (lump sum buy and hold)')
+print('benchmark 1 (lump sum buy and hold)')
 print(f'mean return: {benchmark_return * 100:.2f}%, mean CAGR: {((benchmark_return + 1) ** (1 / testing_period) - 1) * 100:.2f}%')
 
 print('-' * 40)
-print('DCA')
+print('benchmark 2 (DCA, invested monthly in the first 5 years)')
 print(f'mean return: {dca_return * 100:.2f}%, mean CAGR: {((dca_return + 1) ** (1 / testing_period) - 1) * 100:.2f}%')

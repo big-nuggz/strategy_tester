@@ -14,6 +14,7 @@ class DCA(Strategy):
         self.contribution = budget / years / 12
         self.shares = []
         self.final_price = 0.0
+        self.last_month = -1
 
     def __call__(
             self, 
@@ -24,13 +25,15 @@ class DCA(Strategy):
             close: float) -> None:
         self.final_price = close
 
-        # buy at the start of month
-        if date.day != 1:
+        # buy at the start of new month
+        if date.month == self.last_month:
             return
 
         # only buy if budget is available
         if self.remaining <= 0.0:
             return
+
+        self.last_month = date.month # update month if trade has occured
 
         # invest everything if remaining balance is lower than contribution value
         if self.remaining < self.contribution:
