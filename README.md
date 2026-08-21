@@ -2,6 +2,8 @@
 
 Allows you to test out various investment strategies on historical broad market index data.
 
+I wrote a silly little paper using this project, you can read it [here](paper.md).
+
 ## Setup
 
 Install Python and make a virtual environment inside the repo:
