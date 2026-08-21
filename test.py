@@ -41,32 +41,34 @@ if __name__ == '__main__':
         end_date = starting_date + relativedelta(years=testing_period)
         slices += [data.loc[starting_date: end_date]]
 
-    benchmark_results = []
-    dca_results = []
-    timed_dca_results = []
+    results = []
     for sliced_data in slices:
         # initialize the strategies
-        benchmark = BuyAndHold(budget)
-        dca = DCA(budget, years=5)
-        timed_dca = TimedDCA(budget, years=5, dca_portion=0.8, threshold=0.98)
+        strategies = [
+            BuyAndHold(budget), 
+            DCA(budget, years=5), 
+            TimedDCA(budget, years=5, dca_portion=0.8, threshold=0.98)
+        ]
 
         for row in sliced_data.itertuples():
             date, open_, high, low, close = row[:5]
-            benchmark(date, open_, high, low, close)
-            dca(date, open_, high, low, close)
-            timed_dca(date, open_, high, low, close)
+            for strategy in strategies:
+                strategy(date, open_, high, low, close)
 
-        benchmark_results += [benchmark.get_results()[1]]
-        dca_results += [dca.get_results()[1]]
-        timed_dca_results += [timed_dca.get_results()[1]]
+        run = []
+        for strategy in strategies:
+            run.append(strategy.get_results()[1])
+        results.append(run)
+
+    results = np.array(results).T
 
     print(f'{testing_period} year testing period, number of samples = {len(slices)}')
 
-    print('-' * 40)
-    print_result(benchmark_results, testing_period, 'benchmark 1 (lump sum buy and hold)')
-
-    print('-' * 40)
-    print_result(dca_results, testing_period, 'benchmark 2 (DCA, invested monthly in the first 5 years)')
-
-    print('-' * 40)
-    print_result(timed_dca_results, testing_period, 'timed DCA')
+    prefixes = [
+        'benchmark 1 (lump sum buy and hold)', 
+        'benchmark 2 (DCA, invested monthly in the first 5 years)', 
+        'timed DCA'
+    ]
+    for result, prefix in zip(results, prefixes):
+        print('-' * 40)
+        print_result(result, testing_period, prefix)
