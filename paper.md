@@ -35,9 +35,7 @@ The proposed strategy, **Timed DCA**, is similar to simple DCA, in that there's 
 
 ## 3. Evaluation
 
-With both of the datasets, all three strategies were tested for every available samples, then the statistical metrics were calculated from those the results. Metrics used are; mean final 10 year return, mean compound annual growth rate (CAGR) obtained from the mean 10 year return, minimum 10 year return, maximum 10 year return, and the standard deviation of all 10 year returns.
-
-CAGR represents annualized return of a given period, calculated as following:
+With both of the datasets, all three strategies were tested for every available samples, then the statistical metrics were calculated from those the results. Metrics used are; mean final 10 year return, mean compound annual growth rate (CAGR) obtained from the mean 10 year return, minimum 10 year return, maximum 10 year return, and the standard deviation of all 10 year returns. CAGR represents annualized compounding rate of return of a compounded rate of return in a given period, calculated as following:
 
 $$
 CAGR={(r + 1)}^{\frac{1}{n}} - 1
