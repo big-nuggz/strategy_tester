@@ -43,7 +43,7 @@ $$
 
 Where, $r$ is the multi-year compounded rate of return, and $n$ is the number of years.
 
-DCA and Timed DCA both take same a parameter, number of years to spread the investments across. This parameter was set to be the first 5 years out of 10 year period for both of the strategies. Timed DCA additionally takes three parameters; portion of fixed contributions in %, threshold of market dip represented relatively from the recent high in %, and period in months to calculate the recent high. 12 months (approximation of the widely used 52 weeks) was used as the recent high reference period. For the rest of the parameters, a parameter sweep was performed with the fixed contribution portion varying from 20%-80%, and the price dip threshold varying from 95% (5% drop from high) to 99% (1% drop from high).
+DCA and Timed DCA both take a same parameter, number of years to spread the investments across. This parameter was set to be the first 5 years out of 10 year period for both of the strategies. Timed DCA additionally takes three parameters; portion of fixed contributions in %, threshold of market dip represented relatively from the recent high in %, and period in months to calculate the recent high. 12 months (approximation of the widely used 52 weeks) was used as the recent high reference period. For the rest of the parameters, a parameter sweep was performed with the fixed contribution portion varying from 20%-80%, and the price dip threshold varying from 95% (5% drop from high) to 99% (1% drop from high).
 
 ## 4. Results
 
