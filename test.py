@@ -97,7 +97,7 @@ if __name__ == '__main__':
     )
 
     fig.colorbar(cax, label='Mean 10 Year Returns (%)')
-    ax.set_xlabel('Regular Contribution Portion (%)')
+    ax.set_xlabel('Fixed Contribution Portion (%)')
     ax.set_ylabel('Market Dip Threshold (%)')
     ax.set_title('Timed DCA Parameter Sweep')
 
