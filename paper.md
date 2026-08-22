@@ -111,4 +111,4 @@ It is also important to note that the proposed strategy has used only the past p
 
 [^1]: It was revealed to me in a dream.  
 [^2]: https://github.com/big-nuggz/strategy_tester  
-[^3]: [Malkiel, Burton G., Fama, Eugene F. (1970), "EFFICIENT CAPITAL MARKETS: A REVIEW OF THEORY AND EMPIRICAL WORK", The Journal of Finance, 25, pp. 383-417](https://doi.org/10.1111/j.1540-6261.1970.tb00518.x)
+[^3]: [Malkiel, B. G., Fama, E. F. (1970), "EFFICIENT CAPITAL MARKETS: A REVIEW OF THEORY AND EMPIRICAL WORK", The Journal of Finance, 25, pp. 383-417](https://doi.org/10.1111/j.1540-6261.1970.tb00518.x)
