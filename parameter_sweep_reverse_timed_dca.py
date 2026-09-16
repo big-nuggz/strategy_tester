@@ -5,7 +5,8 @@ import numpy as np
 from constants import *
 from data import load_sp500, get_slices
 from chart import save_parameter_sweep_heatmap
-from test import run_test, print_result
+from test import run_test
+from results import print_result
 from strategy.reverse_timed_dca import ReverseTimedDCA
 
 

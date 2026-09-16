@@ -6,6 +6,7 @@ from constants import *
 from data import load_sp500, get_slices
 from chart import save_parameter_sweep_heatmap
 from test import run_test, print_result
+from results import print_result
 from strategy.timed_dca import TimedDCA
 
 
