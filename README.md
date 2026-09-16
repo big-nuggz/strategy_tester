@@ -34,13 +34,30 @@ Download stock data with `download.py`:
 
 `python -m download`
 
-The data will be stored inside `data/`, which will be automatically created upon running the download script for the first time.
+The data will be stored inside `data/`, which will be automatically created upon running the download script for the first time. Data downloaded are:
 
-### Run Strategies
+- S&P 500 index price only (from 1927-12-30 to latest)
+- S&P 500 index total return (from 1988-01-04 to latest)
 
-Add any strategy you want to test inside `strategy/`. Then add it to the list of tests inside `test.py`, and run the test with:
+### Run Test
+
+Run the following:
 
 `python -m test`
+
+List of result tables will be exported into `report/result.md`.
+
+### Create Strategies
+
+Add any strategy you want to test inside `strategy/`. Use `Strategy` base class in `strategy/strategy.py` as reference to implement your own. Once you've added a new trading strategy, add it to the list of strategies to test inside `test.py`, along with the necessary initializing parameters.
+
+### Parameter Sweep
+
+You can run the parameter sweep for Timed DCA with:
+
+`python -m parameter_sweep_timed_dca`
+
+The output can be found inside `charts/`.
 
 ## Development Environment
 
