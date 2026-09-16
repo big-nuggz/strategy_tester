@@ -15,9 +15,9 @@ def generate_table(data: list, units=None, highlights=[]) -> str:
     table = ''
 
     # generate header
-    table += ' | ' + ' | '.join(data[0]) + ' | \n'
+    table += '| ' + ' | '.join(data[0]) + ' |\n'
     # line
-    table +=  ' | ' + ' | '.join([':--:'] * num_columns) + ' | \n'
+    table +=  '| ' + ' | '.join([':--:'] * num_columns) + ' |\n'
     # actual data
     markdown_rows = []
     for row_index, row in enumerate(data[1:]):
@@ -41,7 +41,7 @@ def generate_table(data: list, units=None, highlights=[]) -> str:
             else:
                 formatted_row += [highlight + str(cell) + unit + highlight]
         
-        markdown_rows += [' | ' + ' | '.join(formatted_row) + ' | ']
+        markdown_rows += ['| ' + ' | '.join(formatted_row) + ' |']
 
     table += '\n'.join(markdown_rows)
     
