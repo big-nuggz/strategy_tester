@@ -9,6 +9,7 @@ from markdown import generate_table, get_best_indices
 from strategy.buy_and_hold import BuyAndHold
 from strategy.dca import DCA
 from strategy.timed_dca import TimedDCA
+from strategy.reverse_timed_dca import ReverseTimedDCA
 
 
 def print_result(results: list, period: int, prefix=None) -> None:
@@ -121,13 +122,15 @@ if __name__ == '__main__':
     strategies = [
         BuyAndHold, 
         DCA, 
-        TimedDCA
+        TimedDCA, 
+        ReverseTimedDCA
     ]
 
     parameters = [
         {'budget': BUDGET}, 
         {'budget': BUDGET, 'years': 5}, 
-        {'budget': BUDGET, 'years': 5, 'dca_portion': 0.80, 'threshold': 0.99}
+        {'budget': BUDGET, 'years': 5, 'dca_portion': 0.80, 'threshold': 0.99}, 
+        {'budget': BUDGET, 'years': 5, 'dca_portion': 0.80, 'threshold': 0.95}
     ]
 
     starting_time = datetime.now()
