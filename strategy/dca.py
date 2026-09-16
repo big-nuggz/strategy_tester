@@ -4,6 +4,8 @@ from strategy.strategy import Strategy
 
 
 class DCA(Strategy):
+    name = 'DCA'
+    
     # simple DCA (dollar cost average)
     # invests monthly regardless of the market condition
     def __init__(self, budget, years: int):
@@ -52,6 +54,4 @@ class DCA(Strategy):
         final_return = (portfolio_value - self.budget) / self.budget
 
         return portfolio_value, final_return
-
-    def __repr__(self):
-        return 'DCA'
+    

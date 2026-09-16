@@ -5,6 +5,8 @@ from strategy.strategy import Strategy
 
 
 class TimedDCA(Strategy):
+    name = 'Timed DCA'
+
     # DCA, but also with timing strategy combined
     # invests portion of budget monthly regardless of the market condition
     # withholds portion of budget when the market is close to (default) 52-week high
@@ -78,6 +80,3 @@ class TimedDCA(Strategy):
         final_return = (portfolio_value - self.budget) / self.budget
 
         return portfolio_value, final_return
-
-    def __repr__(self):
-        return 'Timed DCA'

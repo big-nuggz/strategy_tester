@@ -4,6 +4,8 @@ from strategy.strategy import Strategy
 
 
 class BuyAndHold(Strategy):
+    name = 'Buy and Hold'
+    
     # lump sum investing
     def __init__(self, budget):
         super().__init__(budget)
@@ -30,6 +32,3 @@ class BuyAndHold(Strategy):
         portfolio_value = (1 + final_return) * self.budget
 
         return portfolio_value, final_return
-
-    def __repr__(self):
-        return 'Buy and Hold'
