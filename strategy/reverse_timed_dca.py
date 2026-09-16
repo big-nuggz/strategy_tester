@@ -48,7 +48,7 @@ class ReverseTimedDCA(Strategy):
         if self.remaining <= 0.0:
             return
 
-        self.last_month = date.month # update month if trade has occured
+        self.last_month = date.month # update month if trade has occurred
 
         # invest everything if remaining balance is lower than contribution value
         if self.remaining < self.contribution:
