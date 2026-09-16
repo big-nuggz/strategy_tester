@@ -26,3 +26,7 @@ class Strategy:
         final_return = None
 
         return portfolio_value, final_return
+
+    def __repr__(self):
+        # name of the strategy
+        return 'Strategy'

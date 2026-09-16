@@ -52,4 +52,6 @@ class DCA(Strategy):
         final_return = (portfolio_value - self.budget) / self.budget
 
         return portfolio_value, final_return
-        
+
+    def __repr__(self):
+        return 'DCA'
