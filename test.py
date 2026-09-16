@@ -1,9 +1,10 @@
+from os.path import join as path_join
 from datetime import datetime, UTC
 from dateutil.relativedelta import relativedelta
 
 import numpy as np
 
-from constants import PATH_SP500, PATH_SP500_TR
+from constants import PATH_SP500, PATH_SP500_TR, PATH_CHART_ROOT
 from data import load_sp500
 from strategy.buy_and_hold import BuyAndHold
 from strategy.dca import DCA
@@ -81,28 +82,16 @@ if __name__ == '__main__':
         print_result(result, testing_period, prefix)
 
     # chart it out
-    import matplotlib.pyplot as plt
-
     timed_dca_returns = np.mean(results[2:], axis=1)
 
-    Z = timed_dca_returns.reshape(len(param_dca_portion), len(param_threshold)).T
-    fig, ax = plt.subplots()
+    from chart import save_parameter_sweep_heatmap
 
-    cax = ax.imshow(
-        Z * 100, 
-        cmap='viridis',
-        origin='lower',
-        extent=[param_dca_portion[0] * 100, param_dca_portion[-1] * 100, param_threshold[0] * 100, param_threshold[-1] * 100],
-        aspect='auto'
-    )
-
-    fig.colorbar(cax, label='Mean 10 Year Returns (%)')
-    ax.set_xlabel('Fixed Contribution Portion (%)')
-    ax.set_ylabel('Market Dip Threshold (%)')
-    ax.set_title('Timed DCA Parameter Sweep')
-
-    ax.set_xticks(param_dca_portion * 100)
-    ax.set_yticks(param_threshold * 100)
-
-    plt.tight_layout()
-    plt.show()
+    save_parameter_sweep_heatmap(
+        timed_dca_returns, 
+        param_dca_portion, 
+        param_threshold, 
+        'Timed DCA Parameter Sweep', 
+        'Mean 10 Year Returns (%)', 
+        'Fixed Contribution Portion (%)', 
+        'Market Dip Threshold (%)', 
+        path_join(PATH_CHART_ROOT, 'parameter_sweep_1.png'))
