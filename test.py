@@ -49,7 +49,7 @@ def generate_report(
     units = ['', '%', '%', '%', '%', '%']
     evaluators=[None, np.argmax, np.argmax, np.argmax, np.argmin, np.argmax]
 
-    data_price_only = []
+    data_price_only = [header]
     for result, prefix in zip(results_price_only, prefixes):
         mean_return, low, high, std, cagr = get_result_metrics(result, period)
         data_price_only += [[
@@ -60,7 +60,7 @@ def generate_report(
             float(std * 100), 
             float(cagr * 100)]]
 
-    data_total_return = []
+    data_total_return = [header]
     for result, prefix in zip(results_total_return, prefixes):
         mean_return, low, high, std, cagr = get_result_metrics(result, period)
         data_total_return += [[
@@ -72,12 +72,12 @@ def generate_report(
             float(cagr * 100)]]
 
     table_price_only = generate_table(
-        [header] + data_price_only, 
+        data_price_only, 
         units=units, 
         highlights=get_best_indices(data_price_only, evaluators))
 
     table_total_return = generate_table(
-        [header] + data_total_return, 
+        data_total_return, 
         units=units, 
         highlights=get_best_indices(data_total_return, evaluators))
 
@@ -91,7 +91,7 @@ def generate_report(
         f.write(f'## S&P 500 Total Return')
         f.write('\n' * 2)
         f.write(table_total_return)
-        f.write('\n' * 2)
+        f.write('\n')
 
 def run_test(slices: list, strategies: list, parameters: list):
     results = []

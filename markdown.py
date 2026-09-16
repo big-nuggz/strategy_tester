@@ -59,8 +59,8 @@ def get_best_indices(data, evaluators=[]):
     num_columns = len(data[0])
 
     columns = [[row[column_index] 
-                  for row in data[1:]] 
-                  for column_index in range(num_columns)]
+                for row in data[1:]] 
+                for column_index in range(num_columns)]
 
     for column_index, (column, evaluator) in enumerate(zip(columns, evaluators)):
         if evaluator == None:
@@ -69,19 +69,16 @@ def get_best_indices(data, evaluators=[]):
 
     return bests
 
-#     | Strategy | Mean 10 Year Return | Minimum 10 Year Return | Maximum 10 Year Return | Std. Deviation | Mean CAGR |
-# | :--- | :---: | :---: | :---: | :---: | :---: |
-# | Buy and Hold | **109.77%** | -47.04% | **342.61%** | 92.36% | **7.69%** |
-# | DCA | 78.00% | -25.17% | 265.75% | **61.86%** | 5.94% |
-# | **Timed DCA** (best run) | 77.80% | **-25.08%** | 266.04% | 61.87% | 5.92% |
 
+# run test: python -m markdown
 if __name__ == '__main__':
     import numpy as np
 
     data = [
         ['strategy', 'mean 10 year return', 'aaa'], 
         ['buy and hold', 160.6, 89.6], 
-        ['dca', 100.6, 120.34]
+        ['dca', 100.6, 120.34], 
+        ['test', 100.6, 20.34]
     ]
 
     units = ['', '%', '%']
